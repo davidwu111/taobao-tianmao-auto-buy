@@ -64,6 +64,7 @@ def buy(buy_time,mall):
                 #找到“立即购买”，点击
                 if driver.find_element_by_css_selector(btn_buy):
                     driver.find_element_by_css_selector(btn_buy).click()
+                    print("生成订单")
                     break
                 time.sleep(0.01)
                 #等待时间缩短至10ms，下同
@@ -88,7 +89,7 @@ if __name__ == "__main__":
     #url=input("请输入商品链接:")
     #mall=input("请选择商城（淘宝 1  天猫 2  输入数字即可）： ")
     #bt=input("请输入开售时间【2019-02-15（空格）12:55:50】")
-    url='https://detail.tmall.com/item.htm?id=7129791687'
+    url='https://detail.tmall.com/item.htm?spm=a1z10.1-b-s.w5003-22159235104.9.14882c03XIO7HR&id=607379355666&skuId=4255808660217&scene=taobao_shop'
     #命令行粘贴不便，还是在源代码直接输入吧
     mall='2'
     #同上，2是天猫，1是淘宝
@@ -106,5 +107,3 @@ if __name__ == "__main__":
 
     login(url,mall)
     buy(bt,mall)
-        
-    
