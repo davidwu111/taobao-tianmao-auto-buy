@@ -16,11 +16,6 @@ from selenium import webdriver
 import datetime
 import time
 
-#创建浏览器对象
-driver = webdriver.Chrome()
-#窗口最大化显示
-driver.maximize_window()
-
 def login(url,mall):
     '''
     登陆函数
@@ -88,6 +83,7 @@ def buy(buy_time,mall):
             time.sleep(0.01)
             
 
+
 if __name__ == "__main__":
     #url=input("请输入商品链接:")
     #mall=input("请选择商城（淘宝 1  天猫 2  输入数字即可）： ")
@@ -100,8 +96,14 @@ if __name__ == "__main__":
     #同上，时间自己改
     bt_dt=datetime.datetime.strptime(bt, '%Y-%m-%d %H:%M:%S')
     now_dt=datetime.datetime.now()
-    print("还有%.1f小时开始。要继续么？"%((bt_dt-now_dt).seconds/3600))
-    input()
+    print("还有%.1f小时，要开始么？"%((bt_dt-now_dt).seconds/3600))
+    input() #随便说点啥，就要正式开始了
+    
+    #创建浏览器对象
+    driver = webdriver.Chrome()
+    #窗口最大化显示
+    driver.maximize_window()
+
     login(url,mall)
     buy(bt,mall)
         
