@@ -3,7 +3,10 @@
 
 '''
 @time:2019-02-16 16:50
-@author: 李铭
+@原作者author: 李铭
+
+@2019-11-08 10:35
+@改写：saul
 
 程序利用自动测试工具模拟用户下单操作，完成商品的抢购
 仅作为学习过程中的实践，无商业用途
@@ -35,7 +38,7 @@ def login(url,mall):
     else:
         #找到并点击天猫的登陆按钮
         driver.find_element_by_link_text("请登录").click()
-    print("请在30秒内完成登录")
+    print("请在30秒内完成登录,")
     #用户扫码登陆
     time.sleep(30)
     
@@ -53,11 +56,12 @@ def buy(buy_time,mall):
         #"立即购买"的css_selector
         btn_buy='#J_juValid > div.tb-btn-buy > a'
         #"立即下单"的css_selector
-        btn_order='#submitOrder_1 > div.wrapper > a'
+        btn_order='#submitOrderPC_1 > div.wrapper > a'
+        #提交订单按钮有变化,增加了'PC'
     else:
         btn_buy='#J_LinkBuy'
-        btn_order='#submitOrder_1 > div > a'
-        
+        btn_order='#submitOrderPC_1 > div > a'
+        #提交订单按钮有变化,增加了'PC'
     while True:
         #现在时间大于预设时间则开售抢购
         if datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')>buy_time:
@@ -66,9 +70,11 @@ def buy(buy_time,mall):
                 if driver.find_element_by_css_selector(btn_buy):
                     driver.find_element_by_css_selector(btn_buy).click()
                     break
-                time.sleep(0.1)
+                time.sleep(0.01)
+                #等待时间缩短至10ms，下同
             except:
-                time.sleep(0.3)
+                time.sleep(0.01)
+        #print ('还在试，别催了')        
     
     while True:
         try:
@@ -79,14 +85,23 @@ def buy(buy_time,mall):
                 print("购买成功")
                 break
         except:
-            time.sleep(0.5)
+            time.sleep(0.01)
             
-    
 
 if __name__ == "__main__":
-    url=input("请输入商品链接:")
-    mall=input("请选择商城（淘宝 1  天猫 2  输入数字即可）： ")
-    bt=input("请输入开售时间【2019-02-15（空格）12:55:50】")
+    #url=input("请输入商品链接:")
+    #mall=input("请选择商城（淘宝 1  天猫 2  输入数字即可）： ")
+    #bt=input("请输入开售时间【2019-02-15（空格）12:55:50】")
+    url='https://detail.tmall.com/item.htm?id=7129791687'
+    #命令行粘贴不便，还是在源代码直接输入吧
+    mall='2'
+    #同上，2是天猫，1是淘宝
+    bt='2019-11-09 10:00:00'
+    #同上，时间自己改
+    bt_dt=datetime.datetime.strptime(bt, '%Y-%m-%d %H:%M:%S')
+    now_dt=datetime.datetime.now()
+    print("还有%.1f小时开始。要继续么？"%((bt_dt-now_dt).seconds/3600))
+    input()
     login(url,mall)
     buy(bt,mall)
         
