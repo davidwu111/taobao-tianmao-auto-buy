@@ -28,6 +28,8 @@
         Change log 2020-01-13
         Just a beginner for Python, welcome for suggestions.
         
+        Note:
+        **Taobao already blocked this way so this tool will not work properly in the final step!**
         Steps:
         - Please download corresponding Chrome WebDriver first. Apply to all versions. Download Chrome webdriver https://sites.google.com/a/chromium.org/chromedriver/downloads
         - Copy the chromedriver.exe to your project root folder.

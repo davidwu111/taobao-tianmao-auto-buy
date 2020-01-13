@@ -16,6 +16,7 @@
 """
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 # from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.support.wait import WebDriverWait
 # from selenium.webdriver.common.by import By
@@ -98,10 +99,10 @@ def buy(buy_time, _mall):
                     driver.find_element_by_css_selector(btn_buy).click()
                     print("生成订单")
                     break
-                time.sleep(0.01)
+                time.sleep(1.2)
                 # 等待时间缩短至10ms，下同
             except:
-                time.sleep(0.01)
+                time.sleep(1.2)
         # print ('还在试，别催了')
 
     while True:
@@ -130,19 +131,22 @@ if __name__ == "__main__":
     # url=input("请输入商品链接:")
     # mall=input("请选择商城（淘宝 1  天猫 2  输入数字即可）： ")
     # bt=input("请输入开售时间【2019-02-15（空格）12:55:50】")
-    url = 'https://item.taobao.com/item.htm?ft=t&id=596751753893&ali_trackid=2:mm_26632614_0_0:1578920549_291_812620622&spm=a21bo.7925890.192091.3'
+    url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.92.395c318cR7BQNr&id=606633567102&ns=1&abbucket=16&skuId=4461849831762'
     # 命令行粘贴不便，还是在源代码直接输入吧
     mall = check_mall(url)
     # 同上，2是天猫，1是淘宝
-    bt = '2020-01-13 21:11:00'
+    bt = '2020-01-13 22:38:00'
     # 同上，时间自己改
     bt_dt = datetime.datetime.strptime(bt, '%Y-%m-%d %H:%M:%S')
     now_dt = datetime.datetime.now()
     print("还有%.1f小时，要开始么？" % ((bt_dt - now_dt).seconds / 3600))
     input()  # 随便说点啥，就要正式开始了
+    # 允许浏览器重定向，Framebusting requires same-origin or a user gesture
 
+    chrome_options = Options()
+    chrome_options.add_argument("disable-web-security")
     # 创建浏览器对象
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     # 窗口最大化显示
     driver.maximize_window()
 
