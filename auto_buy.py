@@ -99,10 +99,10 @@ def buy(buy_time, _mall):
                     driver.find_element_by_css_selector(btn_buy).click()
                     print("生成订单")
                     break
-                time.sleep(1.2)
+                time.sleep(2)
                 # 等待时间缩短至10ms，下同
             except:
-                time.sleep(1.2)
+                time.sleep(2)
         # print ('还在试，别催了')
 
     while True:
@@ -114,7 +114,7 @@ def buy(buy_time, _mall):
                 print("购买成功")
                 break
         except:
-            time.sleep(0.01)
+            time.sleep(2)
 
 
 # Check if URL contains string 'tmall'
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     # 命令行粘贴不便，还是在源代码直接输入吧
     mall = check_mall(url)
     # 同上，2是天猫，1是淘宝
-    bt = '2020-01-13 22:38:00'
+    bt = '2020-01-13 22:49:00'
     # 同上，时间自己改
     bt_dt = datetime.datetime.strptime(bt, '%Y-%m-%d %H:%M:%S')
     now_dt = datetime.datetime.now()
