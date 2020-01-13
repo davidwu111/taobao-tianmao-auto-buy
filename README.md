@@ -26,5 +26,12 @@
         Have fun.
         
         Change log 2020-01-13
+        Just a beginner for Python, welcome for suggestions.
+        
+        Steps:
         - Please download corresponding Chrome WebDriver first. Apply to all versions. Download Chrome webdriver https://sites.google.com/a/chromium.org/chromedriver/downloads
         - Copy the chromedriver.exe to your project root folder.
+        - Test under Win10, Python 3.8.1, Chrome V79 with no error message.
+        Updates:
+        - Automatically check URL to find if it belongs tmall.
+        
