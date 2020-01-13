@@ -25,3 +25,6 @@
         感谢原作者thelastleft-back，感谢Crossin入门课。初学习作，如有不妥之处，请多包涵。
         Have fun.
         
+        Change log 2020-01-13
+        - Please download corresponding Chrome WebDriver first. Apply to all versions. Download Chrome webdriver https://sites.google.com/a/chromium.org/chromedriver/downloads
+        - Copy the chromedriver.exe to your project root folder.
